@@ -1,14 +1,20 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Prototype extends Application {
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 	
 	Scene scene1, scene2, scene3, scene4, scene5;
 	
@@ -30,7 +36,17 @@ public class Prototype extends Application {
 		scene1VegButton.setOnAction(e -> primaryStage.setScene(scene2));
 		
 		VBox layout1 = new VBox(20);
-		layout1.getChildren().addAll(scene1Label, scene1CheeseButton, scene1PepButton, scene1VegButton);
+		HBox layout1h = new HBox(20);
+		layout1.setPadding(new Insets(15));						// Centered text on scene 1 and made it look nicer overall
+		layout1.getChildren().addAll(scene1Label);
+		scene1CheeseButton.setPrefSize(200, 200);
+		scene1PepButton.setPrefSize(200, 200);
+		scene1VegButton.setPrefSize(200, 200);
+		layout1h.getChildren().addAll(scene1CheeseButton, scene1PepButton, scene1VegButton); 
+		layout1.setAlignment(Pos.TOP_CENTER);
+		layout1.setPadding(new Insets(50,0,0,0));
+		layout1h.setAlignment(Pos.CENTER);
+		layout1.getChildren().addAll(layout1h);
 		scene1 = new Scene(layout1, 700, 450);
 		
 		//Scene 2
@@ -47,7 +63,26 @@ public class Prototype extends Application {
 		nextButton2.setOnAction(e -> primaryStage.setScene(scene3));
 		
 		VBox layout2 = new VBox(20);
-		layout2.getChildren().addAll(scene2Label, topping1, topping2, topping3, topping4, nextButton2);
+		HBox layout2h = new HBox(20);
+		layout2.setPadding(new Insets(15));						// Scene 2 text centered, check boxes centered, next button in bottom left
+		layout2.getChildren().addAll(scene2Label);				// made it look overall more professional
+		topping1.setPrefSize(100, 100);
+		topping2.setPrefSize(100, 100);
+		topping3.setPrefSize(100, 100);
+		topping4.setPrefSize(100, 100);
+		layout2h.setAlignment(Pos.CENTER);
+		
+		
+		layout2h.getChildren().addAll(topping1, topping2, topping3, topping4);
+		layout2.setAlignment(Pos.TOP_CENTER);
+		layout2.setPadding(new Insets(50,0,0,0));
+		VBox nb2Box = new VBox(20);
+		nb2Box.setAlignment(Pos.BOTTOM_RIGHT);
+		nextButton2.setPadding(new Insets(15));
+		nb2Box.setPadding(new Insets(125,50,0,0));
+		nb2Box.getChildren().addAll(nextButton2);
+		layout2.getChildren().addAll(layout2h, nb2Box);
+
 		scene2 = new Scene(layout2, 700, 450);
 		
 		//Scene 3
@@ -60,8 +95,9 @@ public class Prototype extends Application {
 		Button nextButton3 = new Button("Next >");
 		nextButton3.setOnAction(e -> primaryStage.setScene(scene4));
 		
-		VBox layout3 = new VBox(20);
+		VBox layout3 = new VBox(20);						// Similar formatting changes to first 2 layouts
 		layout3.getChildren().addAll(scene3Label, time, nextButton3);
+		layout3.setAlignment(Pos.TOP_CENTER);
 		scene3 = new Scene(layout3, 700, 450);
 		
 		//Scene 4
@@ -99,4 +135,5 @@ public class Prototype extends Application {
 		primaryStage.setScene(scene1);
 		primaryStage.show();
 	}
+	
 }
