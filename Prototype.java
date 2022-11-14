@@ -15,7 +15,7 @@ public class Prototype extends Application {
 		launch(args);
 	}
 	
-	Scene scene1, scene2, scene3, scene4, scene5;
+	Scene scene1, scene2, scene3, scene4, scene5;			
 	
 	
 	@Override
@@ -30,9 +30,9 @@ public class Prototype extends Application {
 		scene1Label.setMinWidth(50);
 		scene1Label.setMinHeight(50);
 		scene1Label.setFont(new Font("Ariel", 24));
-		Button scene1CheeseButton = new Button("Cheese");		
-		Button scene1PepButton = new Button("Pepperoni");
-		Button scene1VegButton = new Button("Vegetable");
+		Button scene1CheeseButton = new Button("Cheese");		//create cheese button
+		Button scene1PepButton = new Button("Pepperoni");		//create pepperoni button
+		Button scene1VegButton = new Button("Vegetable");		//create vegetable button
 		scene1CheeseButton.setOnAction(e -> {
 			results.appendText("Cheese Pizza $...\n");
 			primaryStage.setScene(scene2);
@@ -66,11 +66,11 @@ public class Prototype extends Application {
 		scene2Label.setMinWidth(50);
 		scene2Label.setMinHeight(50);
 		scene2Label.setFont(new Font("Ariel", 24));
-		CheckBox topping1 = new CheckBox("Mushroom");
-		CheckBox topping2 = new CheckBox("Onions");
-		CheckBox topping3 = new CheckBox("Olives");
-		CheckBox topping4 = new CheckBox("Extra Cheese");
-		Button nextButton2 = new Button("Next >");
+		CheckBox topping1 = new CheckBox("Mushroom");			//create mushroom checkbox
+		CheckBox topping2 = new CheckBox("Onions");			//create onions checkbox
+		CheckBox topping3 = new CheckBox("Olives");			//create olives checkbox
+		CheckBox topping4 = new CheckBox("Extra Cheese");		//create extra cheese checkbox
+		Button nextButton2 = new Button("Next >");			//create next button
 		nextButton2.setOnAction(e -> {
 			if(topping1.isSelected()) {
 				results.appendText("\t+ Mushrooms $...\n");
@@ -148,8 +148,8 @@ public class Prototype extends Application {
 		scene5LabelTitle.setMinWidth(50);
 		scene5LabelTitle.setMinHeight(50);
 		scene5LabelTitle.setFont(new Font("Ariel", 24));
-		Label scene5Label2 = new Label("Order Status: ");
-		Label orderStatus = new Label("READY");
+		Label scene5Label2 = new Label("Order Status: ");		//create order status label
+		Label orderStatus = new Label("READY");				
 		orderStatus.setMinWidth(30);
 		orderStatus.setMinHeight(30);
 		orderStatus.setFont(new Font("Ariel", 20));
