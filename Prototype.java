@@ -15,12 +15,14 @@ public class Prototype extends Application {
 		launch(args);
 	}
 	
-	
 	Scene scene1, scene2, scene3, scene4, scene5;
+	
 	
 	@Override
 	public void start(Stage primaryStage) {
 		primaryStage.setTitle("SunDevil Pizza");
+		
+		TextArea results = new TextArea();
 		
 		//Scene 1
 		Label scene1Label = new Label("Which SunDevil Pizza would you like to order?");
@@ -28,12 +30,21 @@ public class Prototype extends Application {
 		scene1Label.setMinWidth(50);
 		scene1Label.setMinHeight(50);
 		scene1Label.setFont(new Font("Ariel", 24));
-		Button scene1CheeseButton = new Button("Cheese");
+		Button scene1CheeseButton = new Button("Cheese");		
 		Button scene1PepButton = new Button("Pepperoni");
 		Button scene1VegButton = new Button("Vegetable");
-		scene1CheeseButton.setOnAction(e -> primaryStage.setScene(scene2));
-		scene1PepButton.setOnAction(e -> primaryStage.setScene(scene2));
-		scene1VegButton.setOnAction(e -> primaryStage.setScene(scene2));
+		scene1CheeseButton.setOnAction(e -> {
+			results.appendText("Cheese Pizza $...\n");
+			primaryStage.setScene(scene2);
+		});
+		scene1PepButton.setOnAction(e -> {
+			results.appendText("Pepperoni Pizza $...\n");
+			primaryStage.setScene(scene2);
+		});
+		scene1VegButton.setOnAction(e -> {
+			results.appendText("Vegetable Pizza $...\n");
+			primaryStage.setScene(scene2);
+		});
 		
 		VBox layout1 = new VBox(20);
 		HBox layout1h = new HBox(20);
@@ -60,7 +71,23 @@ public class Prototype extends Application {
 		CheckBox topping3 = new CheckBox("Olives");
 		CheckBox topping4 = new CheckBox("Extra Cheese");
 		Button nextButton2 = new Button("Next >");
-		nextButton2.setOnAction(e -> primaryStage.setScene(scene3));
+		nextButton2.setOnAction(e -> {
+			if(topping1.isSelected()) {
+				results.appendText("\t+ Mushrooms $...\n");
+			}
+			if(topping2.isSelected()) {
+				results.appendText("\t+ Onions $...\n");
+			}
+			if(topping3.isSelected()) {
+				results.appendText("\t+ Olives $...\n");
+			}
+			if(topping4.isSelected()) {
+				results.appendText("\t+ Extra Cheese $...\n");
+			}
+			
+			results.appendText("\nTax: $...\n\n\nTotal: $...");
+			primaryStage.setScene(scene3);
+		});
 		
 		VBox layout2 = new VBox(20);
 		HBox layout2h = new HBox(20);
@@ -71,7 +98,6 @@ public class Prototype extends Application {
 		topping3.setPrefSize(100, 100);
 		topping4.setPrefSize(100, 100);
 		layout2h.setAlignment(Pos.CENTER);
-		
 		
 		layout2h.getChildren().addAll(topping1, topping2, topping3, topping4);
 		layout2.setAlignment(Pos.TOP_CENTER);
@@ -105,7 +131,7 @@ public class Prototype extends Application {
 		scene4LabelTitle.setMinWidth(50);
 		scene4LabelTitle.setMinHeight(50);
 		scene4LabelTitle.setFont(new Font("Ariel", 24));
-		TextArea results = new TextArea("ORDER INFORMATION GOES HERE");
+		//Results Text Area
 		results.setEditable(false);
 		Label scene4Request = new Label("Enter your ASURITE ID");
 		TextField asurite = new TextField();
